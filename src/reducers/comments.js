@@ -36,19 +36,19 @@ export const comments = (state = [], action) => {
         case ADD_COMMENT_FAILURE:
             return {
                 ...state,
-                status: STATUS_ERROR
+                addStatus: STATUS_ERROR
             };
 
         case ADD_COMMENT_REQUEST:
             return {
                 ...state,
-                status: STATUS_LOADING
+                addStatus: STATUS_LOADING
             };
 
         case ADD_COMMENT_SUCCESS:
             return {
                 ...state,
-                status: STATUS_DONE,
+                addStatus: STATUS_DONE,
                 items: payload
             };
 

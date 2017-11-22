@@ -1,13 +1,13 @@
-import React, { Component } from 'react';
-import Moment from 'react-moment';
+import React, { PureComponent } from 'react';
 import './Comment.scss';
-class Comment extends Component {
+class Comment extends PureComponent {
     render() {
-        const { comments } = this.props;
+        const { comments, user } = this.props;
+        console.log(user);
         const commentList = comments.map(({ id, author_id, post_id, date, text }) => {
             return (
                 <div key={id} className="app-comment">
-                    <b>{author_id} - {post_id} Date: <Moment format="DD MMM YYYY hh:mm" unix>{date}</Moment></b>
+                    <b>{author_id} - {post_id} Date: {date}</b>
                     <p>{text}</p>
                 </div>
             );

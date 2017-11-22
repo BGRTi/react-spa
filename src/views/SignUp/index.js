@@ -16,10 +16,10 @@ const renderField = ({ input, label, type }) =>
 
 class SignUp extends Component {
     render() {
-        const { status, data, error, handleSubmit, submitting } = this.props;
+        const { status, data, handleSubmit, submitting } = this.props;
         const errorMsg = status === STATUS_ERROR ? data.errors._error : false;
         if (status === STATUS_DONE) {
-            return <Redirect to="/posts" />;
+            return <Redirect to="/page/1" />;
         }
         return (
             <div className="row">

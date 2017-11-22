@@ -1,5 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
+const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
@@ -18,6 +19,7 @@ const config = {
     },
     devtool: 'inline-source-map',
     plugins: [
+        new LodashModuleReplacementPlugin(),
         new HtmlWebpackPlugin({
             title: 'Blog',
             template: 'public/index.html'
@@ -46,6 +48,17 @@ const config = {
     },
     module: {
         rules: [
+            {
+                test: /\.js$/,
+                exclude: /node_modules/,
+                use: {
+                    loader: 'babel-loader',
+                    options: {
+                        plugins: ['lodash'],
+                        presets: [['env', { modules: false, targets: { node: 4 } }]]
+                    }
+                }
+            },
             {
                 test: /\.jsx?$/,
                 exclude: /(node_modules|bower_components)/,

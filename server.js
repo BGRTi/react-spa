@@ -13,14 +13,21 @@ const DIST_DIR = path.resolve(__dirname, 'dist');
 const HTML_FILE = path.resolve(DIST_DIR, 'index.html');
 const isDevelopment = process.env.NODE_ENV === 'development';
 const compiler = webpack(config);
-
+const datetime = new Date();
 app.use(bodyParser.json());
 
 app.put('/add-comment', (req, res) => {
     const filePath = path.resolve('./src/resources/data.json');
     let file = fs.readFileSync(filePath, 'utf8');
     file = JSON.parse(file);
-    file.comments.push(req.body);
+    const comment = {
+        'id': file.comments.length + 1,
+        'post_id': req.body.post_id,
+        'author_id': 2,
+        'date': datetime,
+        'text': req.body.text
+    };
+    file.comments.push(comment);
 
     fs.writeFile(filePath, JSON.stringify(file), (err) => {
         if (err) {
@@ -29,7 +36,6 @@ app.put('/add-comment', (req, res) => {
     });
 
     res.sendStatus(200);
-    res.send('File write success');
 });
 
 if (isDevelopment) {

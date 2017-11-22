@@ -8,7 +8,6 @@ import '../Articles/Articles.scss';
 class Article extends Component {
     render() {
         const { id, img, date, title, author, author_id, tags, content } = this.props.post;
-
         return (
             <article key={id}>
                 <header>

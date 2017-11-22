@@ -15,7 +15,7 @@ class Posts extends Component {
         const { dispatch } = this.props;
         const { id, tag } = this.props.match.params;
         const options = {
-            tag: tag,
+            tag,
             limit: postsPerPage,
             page: id
         };
@@ -28,14 +28,15 @@ class Posts extends Component {
     }
 
     componentDidUpdate(prevProps) {
-        if (prevProps.match.params.id !== this.props.match.params.id) {
+        if (prevProps.match.params.id !== this.props.match.params.id ||
+            prevProps.match.params.tag !== this.props.match.params.tag) {
             this.loadPosts();
         }
     }
 
     getContent() {
         const { status, posts } = this.props;
-        const { id } = this.props.match.params;
+        const { id, tag } = this.props.match.params;
         switch (status) {
             case STATUS_ERROR:
                 return <p>There was an error loading the items</p>;
@@ -45,7 +46,7 @@ class Posts extends Component {
                 return <PreLoader />;
 
             case STATUS_DONE:
-                return <Articles posts={posts} tag={this.tag} page={id} />;
+                return <Articles posts={posts} tag={tag} page={id} />;
         }
     }
 

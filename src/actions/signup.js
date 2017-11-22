@@ -1,9 +1,9 @@
+import { SubmissionError } from 'redux-form';
 import {
     GET_SIGN_REQUEST,
     GET_SIGN_SUCCESS,
     GET_SIGN_FAILURE,
 } from './actionConstants';
-import { SubmissionError } from 'redux-form';
 
 const getSignRequest = () => {
     return {

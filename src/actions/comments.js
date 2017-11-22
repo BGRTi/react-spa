@@ -59,30 +59,26 @@ export const getComments = (id) => {
 
                 return response;
             })
-            .then((response) => response.json())
+            .then(response => response.json())
             .then((response) => {
                 let comments = response.comments.sort((a, b) => {
                     return b.date - a.date;
                 });
-
                 comments = comments.filter((comment) => {
                     return comment.post_id === id;
                 });
 
                 dispatch(getCommentsSuccess(comments));
             })
-            .catch((response) => dispatch(getCommentsFailure(response)));
+            .catch(response => dispatch(getCommentsFailure(response)));
     };
 };
 
-export const addComment = (values, dispatch) => {
+export const addComment = (values, dispatch, params) => {
     dispatch(addCommentRequest());
     values = {
-        "id": 5,
-        "author_id": 2,
-        "post_id": 9,
-        "date": "1508696093",
-        "text": values.notes
+        'post_id': params.post_id,
+        'text' : values.notes
     };
     fetch('/add-comment', {
         method: 'put',
@@ -96,11 +92,7 @@ export const addComment = (values, dispatch) => {
                 throw Error(response.status);
             }
 
-            return response;
-        })
-        .then((response) => response.json())
-        .then((response) => {
-            dispatch(addCommentSuccess(response));
+            return dispatch(addCommentSuccess(response.status));
         })
         .catch((response) => dispatch(addCommentFailure(response)));
 };

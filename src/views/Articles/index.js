@@ -33,32 +33,37 @@ class Articles extends Component {
                 </article>
             );
         });
+        let pagesCount;
+        if ( tag ) {
+            pagesCount = Math.ceil(posts.data.length / posts.limit);
+        } else {
+            pagesCount = Math.ceil(posts.length / posts.limit);
+        }
 
-        const pagesCount = Math.ceil(posts.length / posts.limit);
         let pageLinks = Array.from(
             { length: pagesCount }, (v, k) => k + 1
         );
 
         const divStyle = {
-            color: 'black'
+            color: 'black',
+            textDecoration: 'underline'
         };
 
         pageLinks = pageLinks.map((item) => {
             if (page == item) {
-                return ( <Link key={item} style={divStyle} className="pagination-active" to={`/page/${item}`}>
+                return (<Link key={item} style={divStyle} to={`/page/${item}`}>
                     {item}
                 </Link>);
             } else {
-                return ( <Link key={item} to={`/page/${item}`}>
+                return (<Link key={item} to={`/page/${item}`}>
                     {item}
                 </Link>);
             }
         });
 
-        const pagination =
-            <div className="pagination">
-                {pageLinks}
-            </div>;
+        const pagination = <div className="pagination">
+            {pageLinks}
+        </div>;
 
         return (
             <div>

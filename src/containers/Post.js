@@ -21,7 +21,7 @@ class Post extends Component {
         this.loadPost();
     }
 
-    componentDidUpdate(prevProps, prevState) {
+    componentDidUpdate(prevProps) {
         if (prevProps.match.params.id !== this.props.match.params.id) {
             this.loadPost();
         }
@@ -29,7 +29,6 @@ class Post extends Component {
 
     getContent() {
         const { status, post } = this.props;
-
         switch (status) {
             case STATUS_ERROR:
                 return <p>There was an error loading the items</p>;
@@ -57,7 +56,8 @@ class Post extends Component {
 const mapStateToProps = (store) => {
     return {
         post: store.post.items,
-        status: store.post.status
+        status: store.post.status,
+        user: store.session.data
     };
 };
 
