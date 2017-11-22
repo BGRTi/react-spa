@@ -6,15 +6,10 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
-
 const isDevelopment = process.env.NODE_ENV === 'development';
 
 const config = {
     entry: {
-        vendor: [
-            'react',
-            'react-dom'
-        ],
         app: './src/index.js'
     },
     devtool: 'inline-source-map',
@@ -33,8 +28,9 @@ const config = {
         ])
     ],
     output: {
-        filename: '[name].bundle.js',
-        path: path.resolve(__dirname, 'dist')
+        filename: '[name].js',
+        path: path.resolve(__dirname, 'dist'),
+        chunkFilename: '[name].[id].js'
     },
     resolve: {
         alias: {
@@ -48,6 +44,16 @@ const config = {
     },
     module: {
         rules: [
+            {
+                test: /\.bundle\.js$/,
+                use: {
+                    loader: 'bundle-loader',
+                    options: {
+                        lazy: true,
+                        name: 'my-chunk'
+                    }
+                }
+            },
             {
                 test: /\.js$/,
                 exclude: /node_modules/,

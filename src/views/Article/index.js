@@ -13,6 +13,7 @@ class Article extends Component {
                 <header>
                     <h1 className="article-title"><Link to={'/post/' + id}>{title}</Link></h1>
                     <img alt={title} src={img} className="article-image"/>
+                    <img alt={title} src={img} className="article-image"/>
                 </header>
                 <div className="article-content">
                     <p>{content}</p>
