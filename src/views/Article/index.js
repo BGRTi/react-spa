@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import Moment from 'react-moment';
 import Tags from 'views/Tags';
 import Comments from 'containers/Comments';
+import PropTypes from 'prop-types';
 import '../Articles/Articles.scss';
 
 class Article extends Component {
@@ -12,8 +13,7 @@ class Article extends Component {
             <article key={id}>
                 <header>
                     <h1 className="article-title"><Link to={'/post/' + id}>{title}</Link></h1>
-                    <img alt={title} src={img} className="article-image"/>
-                    <img alt={title} src={img} className="article-image"/>
+                    <img alt={title} src={img} className="article-image" />
                 </header>
                 <div className="article-content">
                     <p>{content}</p>
@@ -31,5 +31,9 @@ class Article extends Component {
         );
     }
 }
+
+Article.propTypes = {
+    post: PropTypes.object
+};
 
 export default Article;

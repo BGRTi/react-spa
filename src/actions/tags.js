@@ -37,7 +37,7 @@ export const getTags = () => {
 
                 return response;
             })
-            .then((response) => response.json())
+            .then(response => response.json())
             .then((response) => {
                 let tags = [];
 
@@ -52,6 +52,6 @@ export const getTags = () => {
 
                 return dispatch(getTagsSuccess((tags)));
             })
-            .catch((response) => dispatch(getTagsFailure(response)));
+            .catch(response => dispatch(getTagsFailure(response)));
     };
 };

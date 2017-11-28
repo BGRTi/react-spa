@@ -25,7 +25,7 @@ class SignUp extends Component {
             <div className="row">
                 <div className="col-xs-12">
                     <h2 className="center-xs">Sing up here:</h2>
-                    <form className="auth-form" onSubmit={handleSubmit(getSign)}>
+                    <form className="auth-form" onSubmit={handleSubmit}>
                         <Field
                             name="username"
                             type="text"
@@ -65,7 +65,9 @@ const mapStateToProps = (store) => {
 };
 
 SignUp = reduxForm({
-    form: 'submitValidation'
+    form: 'submitValidation',
+    onSubmit: getSign
+
 })(SignUp);
 
 SignUp = connect(mapStateToProps)(SignUp);

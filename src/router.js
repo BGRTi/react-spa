@@ -7,6 +7,7 @@ import loadPosts from 'bundle-loader?lazy!./containers/Posts';
 import loadPost from 'bundle-loader?lazy!./containers/Post';
 import loadUser from 'bundle-loader?lazy!./containers/User';
 import loadSignUp from 'bundle-loader?lazy!./views/SignUp/';
+import loadProfile from 'bundle-loader?lazy!./containers/Profile';
 import Bundle from './Bundle';
 
 const About = (props) => (
@@ -57,7 +58,7 @@ export default (
                 <Route path="/signup" component={SignUp} />
                 <Route path="/profile/" component={Profile} />
                 <Route path="/user/:id" component={User} />
-                <Route path="/tag/:tag" key="filtered" component={Posts} />
+                <Route path="/tag/:tag/:id" key="filter" component={Posts} />
             </Switch>
         </MainLayout>
     </BrowserRouter>

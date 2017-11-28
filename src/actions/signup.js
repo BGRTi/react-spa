@@ -35,7 +35,7 @@ export const getSign = (values, dispatch) => {
             if (!response.ok) { throw Error(response.statusText); }
             return response;
         })
-        .then((response) => response.json())
+        .then(response => response.json())
         .then((users) => {
             const usersArr = (users.users).map((user) => user.email);
             if (!usersArr.includes(values.username)) {
@@ -54,5 +54,5 @@ export const getSign = (values, dispatch) => {
                 }
             });
         })
-        .catch((response) => dispatch(getSignFailure(response)));
+        .catch(response => dispatch(getSignFailure(response)));
 };

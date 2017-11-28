@@ -94,5 +94,5 @@ export const addComment = (values, dispatch, params) => {
 
             return dispatch(addCommentSuccess(response.status));
         })
-        .catch((response) => dispatch(addCommentFailure(response)));
+        .catch(response => dispatch(addCommentFailure(response)));
 };

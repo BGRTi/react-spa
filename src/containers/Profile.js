@@ -11,7 +11,7 @@ import {
 class Profile extends Component {
     getContent() {
         const { status, user, posts } = this.props;
-
+        console.log(posts);
         switch (status) {
             case STATUS_ERROR:
                 return <p>Error while loading user profile</p>;
@@ -20,7 +20,7 @@ class Profile extends Component {
                 return <PreLoader />;
 
             case STATUS_DONE:
-                return <UserPage user={user} posts={posts} />;
+                return <UserPage user={user} posts={posts.data} />;
 
             default:
                 return <PreLoader />;
@@ -29,7 +29,7 @@ class Profile extends Component {
 
     render() {
         return (
-            <section>{this.getContent()}</section>
+            <section>{ this.getContent() }</section>
         );
     }
 }

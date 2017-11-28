@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import Articles from 'views/Articles';
+import Pagination from 'views/Pagination';
 import PreLoader from 'views/PreLoader';
-import { getPosts } from 'actions/posts';
+import { getPostsPages } from 'actions/posts';
 import {
     STATUS_ERROR,
     STATUS_LOADING,
     STATUS_DONE,
 } from 'actions/actionConstants';
 
-class Posts extends Component {
+class PaginationContainer extends Component {
     loadPosts() {
         const postsPerPage = 4;
         const { dispatch } = this.props;
@@ -20,7 +20,7 @@ class Posts extends Component {
             page: id,
         };
 
-        dispatch(getPosts(options));
+        dispatch(getPostsPages(options));
     }
 
     componentDidMount() {
@@ -28,7 +28,8 @@ class Posts extends Component {
     }
 
     componentDidUpdate(prevProps) {
-        if (prevProps.match.params !== this.props.match.params) {
+        if (prevProps.match.params !== this.props.match.params ||
+            prevProps.match.params.tag !== this.props.match.params.tag) {
             this.loadPosts();
         }
     }
@@ -45,7 +46,7 @@ class Posts extends Component {
                 return <PreLoader />;
 
             case STATUS_DONE:
-                return <Articles posts={posts} tag={tag} page={id} />;
+                return <Pagination posts={posts} tag={tag} page={id} />;
         }
     }
 
@@ -65,4 +66,4 @@ const mapStateToProps = (store) => {
     };
 };
 
-export default connect(mapStateToProps)(Posts);
+export default connect(mapStateToProps)(PaginationContainer);

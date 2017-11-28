@@ -37,7 +37,7 @@ export const loadUser = (userId) => {
 
                 return response;
             })
-            .then((response) => response.json())
+            .then(response => response.json())
             .then((response) => {
                 response.users.map((user) => {
                     if (userId == user.id) {
@@ -45,6 +45,6 @@ export const loadUser = (userId) => {
                     }
                 });
             })
-            .catch((response) => dispatch(getUserFailure(response)));
+            .catch(response => dispatch(getUserFailure(response)));
     };
 };

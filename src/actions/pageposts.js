@@ -37,12 +37,12 @@ export const getPagePosts = () => {
 
                 return response;
             })
-            .then((response) => response.json())
+            .then(response => response.json())
             .then((response) => {
                 const posts = response.posts;
                 posts.sort((a, b) => b.date - a.date);
                 dispatch(getPagePostsSuccess(posts));
             })
-            .catch((response) => dispatch(getPagePostsFailure(response)));
+            .catch(response => dispatch(getPagePostsFailure(response)));
     };
 };

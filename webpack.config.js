@@ -30,7 +30,7 @@ const config = {
     output: {
         filename: '[name].js',
         path: path.resolve(__dirname, 'dist'),
-        chunkFilename: '[name].[id].js'
+        chunkFilename: '[name].chunk.js'
     },
     resolve: {
         alias: {

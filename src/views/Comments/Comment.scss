@@ -8,7 +8,7 @@
 
 @keyframes rotate {
   100% {
-    transform: rotate(180deg);
+    transform: rotate(720deg);
   }
 }
 
@@ -33,18 +33,18 @@
 
 .app-comments_preloader {
   margin: 0 auto;
-  background-color: #0f1101;
+  background-color: #6d6d6d;
   height: 40px;
   width: 40px;
   border-radius: 20px;
+  animation-name: rotate;
+  animation-duration: 2s;
   .circle {
     height: 10px;
     width: 10px;
     background-color: white;
     border-radius: 5px;
     margin: auto;
-    animation-name: rotate;
-    animation-duration: 1s;
   }
 }
 
