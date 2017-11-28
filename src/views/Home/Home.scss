@@ -1,0 +1,16 @@
+@import '~styles/core.scss';
+
+.home-wrapper {
+  margin: 60px 0;
+
+  text-align: center;
+
+  h1 {
+    margin: 12px 0;
+
+    font-size: $primary-font-size;
+    letter-spacing: $primary-letter-spacing;
+    text-transform: none;
+    line-height: $primary-line-height;
+  }
+}

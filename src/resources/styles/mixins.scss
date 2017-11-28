@@ -1,0 +1,7 @@
+@mixin marg ($pads...) {
+  margin: $pads;
+}
+
+@mixin pad ($pads...) {
+  padding: $pads;
+}

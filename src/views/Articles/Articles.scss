@@ -1,0 +1,110 @@
+@import '~styles/core.scss';
+
+article {
+  margin: 0;
+
+  background: #fff;
+
+  text-align: center;
+
+  a {
+    text-decoration: none;
+  }
+
+  footer {
+    padding-bottom: 15px;
+
+    &:before {
+      display: block;
+      width: 70%;
+      margin: 20px 15%;
+
+      border-top: solid 1px #dedede;
+
+      content: "";
+    }
+  }
+}
+
+.articles article {
+  @extend article;
+
+  margin: 50px 0;
+
+  &:first-of-type {
+    margin-top: 0;
+  }
+
+  &:last-of-type {
+    margin-bottom: 0;
+  }
+}
+
+.article-content {
+  margin: 30px 20px;
+}
+
+.article-image {
+  width: 100%;
+  margin-top: -12px;
+}
+
+.article-title {
+  margin: 0;
+  padding: 12px 0;
+
+  background: #eceff1;
+
+  font-size: $primary-font-size;
+  letter-spacing: $primary-letter-spacing;
+  line-height: $primary-line-height;
+  text-transform: none;
+
+  cursor: pointer;
+
+  a {
+    color: $base-font-color;
+  }
+}
+
+.article-dot {
+  margin: 0 10px;
+
+  &:after {
+    content: '●';
+  }
+}
+
+.article-arrow{
+  &:after {
+    content: '→';
+  }
+}
+
+.article-info {
+  a {
+    color: $primary-font-color;
+
+    letter-spacing: $primary-letter-spacing;
+
+    transition: all 0.3s ease-in-out;
+
+    &:hover {
+      color: #000;
+    }
+  }
+}
+
+.pagination a {
+  padding: 5px;
+  background-color: #c8c8c8;
+  line-height: $base-line-height;
+  font-size: large;
+  font-weight: 400;
+  text-decoration: none;
+  color: $base-font-color;
+  transition: 0.2s;
+  &:hover {
+    color: #0f1101;
+  }
+}

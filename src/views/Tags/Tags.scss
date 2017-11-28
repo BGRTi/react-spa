@@ -1,0 +1,30 @@
+@import '~styles/core.scss';
+
+.tags-wrapper {
+  background: #fff;
+}
+
+.tags {
+  padding: 0;
+  display: inline-flex;
+  flex-wrap: wrap;
+
+  list-style-type: none;
+}
+
+.tags a {
+    padding: 2px 5px;
+    margin: 0 5px;
+
+    background: #eceff1;
+    color: $wh;
+
+    text-decoration: none;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+
+    &:hover {
+      color: $primary-font-color;
+      background: $wh;
+    }
+}

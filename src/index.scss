@@ -1,0 +1,27 @@
+@import '~styles/core.scss';
+
+html {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+  position: relative;
+
+  background: #eceff1;
+  color: $base-font-color;
+
+  font-family: $base-font-family;
+  font-weight: $base-font-weight;
+  font-size: $base-font-size;
+  letter-spacing: $base-letter-spacing;
+  line-height: $base-line-height;
+}
+
+h1, h2, h3 {
+  margin: 1em 0 .5em;
+
+  text-rendering: optimizeLegibility;
+}

@@ -1,0 +1,20 @@
+@import '~styles/core.scss';
+
+.popular-wrapper {
+  padding: 0px 10px 0px 10px;
+  background-color: #ffffff;
+
+  .popular {
+    background-color: #616161;
+  }
+
+  .popular-image {
+    width: 100%;
+  }
+
+  .popular-title {
+    text-decoration: none;
+    color: #ffffff;
+  }
+
+}

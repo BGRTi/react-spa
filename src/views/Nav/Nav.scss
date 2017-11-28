@@ -1,0 +1,50 @@
+@import '~styles/core.scss';
+
+.navigation {
+  a {
+    position: relative;
+    padding: 5px;
+    margin: 0 30px;
+
+    color: $base-font-color;
+
+    font-family: $primary-font-family;
+    text-shadow: 0px 0px 1px grey;
+    font-weight: $nav-font-weight;
+    font-size: $link-font-size;
+    letter-spacing: $primary-letter-spacing;
+    text-transform: uppercase;
+    text-decoration: none;
+
+    transition: background-color .1s 0s ease-in-out, color .1s 0s ease-in-out;
+
+    &:before {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+
+      width: 100%;
+      height: 2px;
+      visibility: hidden;
+
+      background-color: $base-font-color;
+
+      content: '';
+      transform: scaleX(0);
+      transition: all 0.2s ease-in-out 0s;
+    }
+
+    &:hover {
+      &:before {
+        visibility: visible;
+        transform: scaleX(1);
+      }
+    }
+  }
+}
+
+.auth {
+  a {
+    margin: 0 10px;
+  }
+}
