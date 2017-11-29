@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import Moment from 'react-moment';
 import Tags from 'views/Tags';
 import PaginationContainer from 'containers/Pagination';
+
 import './Articles.scss';
 
 class Articles extends Component {

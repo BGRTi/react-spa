@@ -11,6 +11,12 @@ import {
     GET_PAGEPOSTS_REQUEST,
     GET_PAGEPOSTS_SUCCESS,
     GET_PAGEPOSTS_FAILURE,
+<<<<<<< HEAD
+=======
+    GET_POSTSPAGES_REQUEST,
+    GET_POSTSPAGES_SUCCESS,
+    GET_POSTSPAGES_FAILURE,
+>>>>>>> fe94996288c74110e238e82cc29c3623a949f80b
 } from 'actions/actionConstants';
 
 export const post = (state = [], action) => {
@@ -43,6 +49,10 @@ export const post = (state = [], action) => {
 
 export const posts = (state = [], action) => {
     const { type, payload } = action;
+<<<<<<< HEAD
+=======
+
+>>>>>>> fe94996288c74110e238e82cc29c3623a949f80b
     switch (type) {
         case GET_POSTS_FAILURE:
             return {
@@ -95,3 +105,34 @@ export const pageposts = (state = [], action) => {
             return state;
     }
 };
+<<<<<<< HEAD
+=======
+
+export const postspages = (state = [], action) => {
+    const { type, payload } = action;
+
+    switch (type) {
+        case GET_POSTSPAGES_FAILURE:
+            return {
+                ...state,
+                status: STATUS_ERROR
+            };
+
+        case GET_POSTSPAGES_REQUEST:
+            return {
+                ...state,
+                status: STATUS_LOADING
+            };
+
+        case GET_POSTSPAGES_SUCCESS:
+            return {
+                ...state,
+                status: STATUS_DONE,
+                items: payload
+            };
+
+        default:
+            return state;
+    }
+};
+>>>>>>> fe94996288c74110e238e82cc29c3623a949f80b

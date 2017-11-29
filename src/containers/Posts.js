@@ -17,7 +17,7 @@ class Posts extends Component {
         const options = {
             tag,
             limit: postsPerPage,
-            page: id
+            page: id,
         };
 
         dispatch(getPosts(options));
@@ -25,7 +25,6 @@ class Posts extends Component {
 
     componentDidMount() {
         this.loadPosts();
-
     }
 
     componentDidUpdate(prevProps) {
@@ -49,6 +48,7 @@ class Posts extends Component {
 
             default:
                 return <PreLoader />;
+
         }
     }
 
