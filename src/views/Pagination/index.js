@@ -51,7 +51,7 @@ class Pagination extends Component {
         let pagination = pageLinks.length !== 1 ? <div className="pagination">{pageLinks}</div> : ' ';
 
         return (
-            <div>
+            <div className='someChanges'>
                 {pagination}
             </div>
         );
