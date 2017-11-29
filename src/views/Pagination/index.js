@@ -3,14 +3,14 @@ import { Link } from 'react-router-dom';
 
 class Pagination extends Component {
     render() {
-        const { posts, tag, page } = this.props;
-
+        let { pages, tag, page } = this.props;
+        pages = pages.items;
         let pagesCount;
 
         if (tag) {
-            pagesCount = Math.ceil(posts.filteredLength / posts.limit);
+            pagesCount = Math.ceil(pages.filteredLength / pages.limit);
         } else {
-            pagesCount = Math.ceil(posts.length / posts.limit);
+            pagesCount = Math.ceil(pages.length / pages.limit);
         }
 
         let pageLinks = Array.from(
@@ -48,9 +48,7 @@ class Pagination extends Component {
             });
         }
 
-        let pagination = <div className="pagination">
-            {pageLinks}
-        </div>;
+        let pagination = pageLinks.length !== 1 ? <div className="pagination">{pageLinks}</div> : ' ';
 
         return (
             <div>

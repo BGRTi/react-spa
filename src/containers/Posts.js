@@ -17,7 +17,7 @@ class Posts extends Component {
         const options = {
             tag,
             limit: postsPerPage,
-            page: id,
+            page: id
         };
 
         dispatch(getPosts(options));
@@ -25,6 +25,7 @@ class Posts extends Component {
 
     componentDidMount() {
         this.loadPosts();
+
     }
 
     componentDidUpdate(prevProps) {
@@ -40,12 +41,14 @@ class Posts extends Component {
             case STATUS_ERROR:
                 return <p>There was an error loading the items</p>;
 
-            default:
             case STATUS_LOADING:
                 return <PreLoader />;
 
             case STATUS_DONE:
                 return <Articles posts={posts} tag={tag} page={id} />;
+
+            default:
+                return <PreLoader />;
         }
     }
 

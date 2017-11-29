@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Pagination from 'views/Pagination';
 import PreLoader from 'views/PreLoader';
-import { getPostsPages } from 'actions/posts';
 import {
     STATUS_ERROR,
     STATUS_LOADING,
@@ -10,49 +9,27 @@ import {
 } from 'actions/actionConstants';
 
 class PaginationContainer extends Component {
-    loadPosts() {
-        const postsPerPage = 4;
-        const { dispatch } = this.props;
-        const { id, tag } = this.props.match.params;
-        const options = {
-            tag,
-            limit: postsPerPage,
-            page: id,
-        };
-
-        dispatch(getPostsPages(options));
-    }
-
-    componentDidMount() {
-        this.loadPosts();
-    }
-
-    componentDidUpdate(prevProps) {
-        if (prevProps.match.params !== this.props.match.params ||
-            prevProps.match.params.tag !== this.props.match.params.tag) {
-            this.loadPosts();
-        }
-    }
-
     getContent() {
-        const { status, posts } = this.props;
-        const { id, tag } = this.props.match.params;
+        const { status, pages, tag, page } = this.props;
+
         switch (status) {
             case STATUS_ERROR:
                 return <p>There was an error loading the items</p>;
 
-            default:
             case STATUS_LOADING:
                 return <PreLoader />;
 
             case STATUS_DONE:
-                return <Pagination posts={posts} tag={tag} page={id} />;
+                return <Pagination pages={pages} tag={tag} page={page} />;
+
+            default:
+                return <PreLoader />;
         }
     }
 
     render() {
         return (
-            <section className="articles">
+            <section>
                 { this.getContent() }
             </section>
         );
@@ -61,7 +38,7 @@ class PaginationContainer extends Component {
 
 const mapStateToProps = (store) => {
     return {
-        posts: store.posts.items,
+        pages: store.posts,
         status: store.posts.status
     };
 };

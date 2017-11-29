@@ -11,9 +11,6 @@ import {
     GET_PAGEPOSTS_REQUEST,
     GET_PAGEPOSTS_SUCCESS,
     GET_PAGEPOSTS_FAILURE,
-    GET_POSTSPAGES_REQUEST,
-    GET_POSTSPAGES_SUCCESS,
-    GET_POSTSPAGES_FAILURE,
 } from 'actions/actionConstants';
 
 export const post = (state = [], action) => {
@@ -46,7 +43,6 @@ export const post = (state = [], action) => {
 
 export const posts = (state = [], action) => {
     const { type, payload } = action;
-
     switch (type) {
         case GET_POSTS_FAILURE:
             return {
@@ -89,34 +85,6 @@ export const pageposts = (state = [], action) => {
             };
 
         case GET_PAGEPOSTS_SUCCESS:
-            return {
-                ...state,
-                status: STATUS_DONE,
-                items: payload
-            };
-
-        default:
-            return state;
-    }
-};
-
-export const postspages = (state = [], action) => {
-    const { type, payload } = action;
-
-    switch (type) {
-        case GET_POSTSPAGES_FAILURE:
-            return {
-                ...state,
-                status: STATUS_ERROR
-            };
-
-        case GET_POSTSPAGES_REQUEST:
-            return {
-                ...state,
-                status: STATUS_LOADING
-            };
-
-        case GET_POSTSPAGES_SUCCESS:
             return {
                 ...state,
                 status: STATUS_DONE,

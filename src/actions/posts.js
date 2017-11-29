@@ -47,25 +47,6 @@ const getPostsFailure = () => {
     };
 };
 
-const getPostsPagesRequest = () => {
-    return {
-        type: GET_POSTS_REQUEST
-    };
-};
-
-const getPostsPagesSuccess = (pages) => {
-    return {
-        type: GET_POSTS_SUCCESS,
-        payload: pages
-    };
-};
-
-const getPostsPagesFailure = () => {
-    return {
-        type: GET_POSTS_FAILURE
-    };
-};
-
 export const getPosts = (options) => {
     return (dispatch) => {
         dispatch(getPostsRequest());
@@ -75,11 +56,11 @@ export const getPosts = (options) => {
                 if (!response.ok) {
                     throw Error(response.statusText);
                 }
-
                 return response;
             })
             .then(response => response.json())
             .then((response) => {
+
                 let posts = response.posts.sort((a, b) => {
                     return b.date - a.date;
                 });
@@ -106,57 +87,8 @@ export const getPosts = (options) => {
                 posts = {
                     data: posts,
                     length: postsLength,
-                    filteredLength,
-                    limit: options.limit
-                };
-
-                dispatch(getPostsSuccess(posts));
-            })
-            .catch(response => dispatch(getPostsFailure(response)));
-    };
-};
-
-export const getPostsPages = (options) => {
-    return (dispatch) => {
-        dispatch(getPostsRequest());
-
-        fetch(url)
-            .then((response) => {
-                if (!response.ok) {
-                    throw Error(response.statusText);
-                }
-
-                return response;
-            })
-            .then(response => response.json())
-            .then((response) => {
-                let posts = response.posts.sort((a, b) => {
-                    return b.date - a.date;
-                });
-
-                const postsLength = posts.length;
-
-                if (options.tag) {
-                    posts = posts.filter((post) => {
-                        return post.tags.indexOf(options.tag) !== -1;
-                    });
-                }
-
-                const filteredLength = posts.length;
-
-                if (options.page) {
-                    const firstElem = options.page !== 1 ?
-                    (options.page - 1) * options.limit :
-                    ((options.page - 1) * options.limit) + 1;
-                    const lastElem = firstElem + options.limit;
-
-                    posts = posts.slice(firstElem, lastElem);
-                }
-
-                posts = {
-                    length: postsLength,
-                    filteredLength,
-                    limit: options.limit
+                    limit: options.limit,
+                    filteredLength
                 };
 
                 dispatch(getPostsSuccess(posts));

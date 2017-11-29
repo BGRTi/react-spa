@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import Moment from 'react-moment';
 import Tags from 'views/Tags';
+import PaginationContainer from 'containers/Pagination';
 import './Articles.scss';
 
 class Articles extends Component {
@@ -34,58 +35,11 @@ class Articles extends Component {
             );
         });
 
-        let pagesCount;
-
-        if (tag) {
-            pagesCount = Math.ceil(posts.filteredLength / posts.limit);
-        } else {
-            pagesCount = Math.ceil(posts.length / posts.limit);
-        }
-
-        let pageLinks = Array.from(
-            { length: pagesCount }, (v, k) => k + 1
-        );
-
-        const divStyle = {
-            color: 'black',
-            textDecoration: 'underline'
-        };
-
-        if (tag) {
-            pageLinks = pageLinks.map((item) => {
-                if (page == item) {
-                    return (<Link key={item} style={divStyle} to={`/tag/${tag}/${item}`}>
-                        {item}
-                    </Link>);
-                } else {
-                    return (<Link key={item} to={`/tag/${tag}/${item}`}>
-                        {item}
-                    </Link>);
-                }
-            });
-        } else {
-            pageLinks = pageLinks.map((item) => {
-                if (page == item) {
-                    return (<Link key={item} style={divStyle} to={`/page/${item}`}>
-                        {item}
-                    </Link>);
-                } else {
-                    return (<Link key={item} to={`/page/${item}`}>
-                        {item}
-                    </Link>);
-                }
-            });
-        }
-
-        let pagination = <div className="pagination">
-                {pageLinks}
-        </div>;
-
         return (
             <div>
                 {searchTitle}
                 {postList}
-                {pagination}
+                <PaginationContainer tag={tag} page={page}/>
             </div>
         );
     }
