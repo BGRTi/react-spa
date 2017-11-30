@@ -3,7 +3,6 @@ import PreLoader from 'views/PreLoader';
 import Comment from 'views/Comments';
 import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
-import _ from 'lodash';
 import { getComments, addComment } from 'actions/comments';
 import {
     STATUS_ERROR,

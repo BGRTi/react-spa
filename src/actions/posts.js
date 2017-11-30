@@ -56,6 +56,11 @@ export const getPosts = (options) => {
                 if (!response.ok) {
                     throw Error(response.statusText);
                 }
+                return response;
+            })
+            .then(response => response.json())
+            .then((response) => {
+
                 let posts = response.posts.sort((a, b) => {
                     return b.date - a.date;
                 });

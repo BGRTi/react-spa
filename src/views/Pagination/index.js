@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 class Pagination extends Component {
     render() {
         let { pages, tag, page } = this.props;
-        pages = pages.items;
+
         let pagesCount;
 
         if (tag) {

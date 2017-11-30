@@ -10,8 +10,7 @@ import {
 
 class PaginationContainer extends Component {
     getContent() {
-        const { status, posts } = this.props;
-        const { id, tag } = this.props.match.params;
+        const { status, posts, page, tag } = this.props;
 
         switch (status) {
             case STATUS_ERROR:
@@ -21,7 +20,7 @@ class PaginationContainer extends Component {
                 return <PreLoader />;
 
             case STATUS_DONE:
-                return <Pagination pages={posts} tag={tag} page={id} />;
+                return <Pagination pages={posts} tag={tag} page={page} />;
 
             default:
                 return <PreLoader />;
@@ -39,7 +38,7 @@ class PaginationContainer extends Component {
 
 const mapStateToProps = (store) => {
     return {
-        posts: store.posts,
+        posts: store.posts.items,
         status: store.posts.status
     };
 };
