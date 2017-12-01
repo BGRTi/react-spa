@@ -16,8 +16,8 @@ class Nav extends Component {
                 link: '/'
             },
             {
-                title: titles.ABOUT_TITLE,
-                link: '/about'
+                title: titles.REDDIT_TITLE,
+                link: '/reddit'
             },
             {
                 title: titles.BLOG_TITLE,

@@ -2,7 +2,7 @@ import React from 'react';
 import { Switch, BrowserRouter, Route } from 'react-router-dom';
 import MainLayout from 'views/LayoutMain';
 import Home from 'views/Home';
-import loadAbout from 'bundle-loader?lazy!./views/About/index';
+import loadPicker from 'bundle-loader?lazy!./containers/Reddit';
 import loadPosts from 'bundle-loader?lazy!./containers/Posts';
 import loadPost from 'bundle-loader?lazy!./containers/Post';
 import loadUser from 'bundle-loader?lazy!./containers/User';
@@ -10,9 +10,9 @@ import loadSignUp from 'bundle-loader?lazy!./views/SignUp/';
 import loadProfile from 'bundle-loader?lazy!./containers/Profile';
 import Bundle from './Bundle';
 
-const About = (props) => (
-    <Bundle load={loadAbout}>
-        { (About) => <About {...props} /> }
+const Reddit = (props) => (
+    <Bundle load={loadPicker}>
+        { (Reddit) => <Reddit {...props} /> }
     </Bundle>
 );
 
@@ -51,7 +51,7 @@ export default (
         <MainLayout>
             <Switch>
                 <Route exact path="/" component={Home} />
-                <Route path="/about" component={About} />
+                <Route path="/reddit" component={Reddit} />
                 <Route path="/posts" key="all" component={Posts} />
                 <Route path="/page/:id" key="pages" component={Posts} />
                 <Route path="/post/:id" component={Post} />

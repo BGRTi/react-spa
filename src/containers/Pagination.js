@@ -10,9 +10,10 @@ import {
 
 class PaginationContainer extends Component {
     getContent() {
-        const { status, posts, page, tag } = this.props;
+        console.log(this.props);
+        const { page, tag } = this.props;
 
-        switch (status) {
+        switch (this.props.status) {
             case STATUS_ERROR:
                 return <p>There was an error loading the items</p>;
 
@@ -20,7 +21,7 @@ class PaginationContainer extends Component {
                 return <PreLoader />;
 
             case STATUS_DONE:
-                return <Pagination pages={posts} tag={tag} page={page} />;
+                return <Pagination pages={this.props.posts} tag={tag} page={page} />;
 
             default:
                 return <PreLoader />;

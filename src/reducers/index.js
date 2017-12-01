@@ -5,6 +5,7 @@ import { reducer as reduxFormReducer } from 'redux-form';
 import { user, session } from './user';
 import { popular } from './popular';
 import { comments } from './comments';
+import { postsBySubreddit, selectedSubreddit } from './reddit';
 
 const reducers = combineReducers({
     tags,
@@ -15,6 +16,8 @@ const reducers = combineReducers({
     post,
     posts,
     pageposts,
+    postsBySubreddit,
+    selectedSubreddit,
     form: reduxFormReducer
 });
 
