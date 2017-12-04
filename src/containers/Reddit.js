@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Picker from 'views/Picker';
+import RedditPost from 'views/RedditPost';
 import {
     selectSubreddit,
     fetchPostsIfNeeded,
@@ -50,11 +51,13 @@ class Reddit extends Component {
                     options={['reactjs', 'frontend']}
                 />
                 <p>
-                    {lastUpdated &&
+                    {
+                        lastUpdated &&
                     <span>
-              Last updated at {new Date(lastUpdated).toLocaleTimeString()}.
+                        Last updated at {new Date(lastUpdated).toLocaleTimeString()}.
                         {' '}
-            </span>}
+                    </span>
+                    }
                     {!isFetching &&
                     <a href="#" onClick={this.handleRefreshClick}>
                         Refresh
@@ -64,8 +67,8 @@ class Reddit extends Component {
                 {!isFetching && posts.length === 0 && <h2>Empty.</h2>}
                 {posts.length > 0 &&
                 <div style={{ opacity: isFetching ? 0.5 : 1 }}>
-                    <ul className='reddit-links'>
-                        { posts.map((post, i) => <a key={i} href={post.url}><li>{post.title}<small> / {post.author} /</small></li></a>) }
+                    <ul  className='reddit-links'>
+                        { posts.map((post, i) => <RedditPost key={i} post={post} />) }
                     </ul>
                 </div>}
             </div>
