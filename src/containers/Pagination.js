@@ -10,7 +10,6 @@ import {
 
 class PaginationContainer extends Component {
     getContent() {
-        console.log(this.props);
         const { page, tag } = this.props;
 
         switch (this.props.status) {

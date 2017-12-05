@@ -86,7 +86,6 @@ Reddit.propTypes = {
 
 const mapStateToProps = (state) => {
     const { selectedSubreddit, postsBySubreddit } = state;
-
     const {isFetching, lastUpdated, items: posts} = postsBySubreddit[selectedSubreddit] || {isFetching: true, items: []};
 
     return {

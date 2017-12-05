@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import Nav from 'views/Nav';
 import Sidebar from 'containers/Sidebar';
 import './LayoutMain.scss';
+import ErrorBoundary from "../../ErrorBoundary";
 
 class LayoutMain extends Component {
     render() {
@@ -27,7 +28,9 @@ class LayoutMain extends Component {
                 <main className="container app__content">
                     <div className="row">
                         <div className="col-xs-8 app__posts">
-                            { children }
+                            <ErrorBoundary>
+                                { children }
+                            </ErrorBoundary>
                         </div>
                         <div className="col-xs-offset-1 col-xs-3">
                             <Sidebar />

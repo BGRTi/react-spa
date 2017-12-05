@@ -22,6 +22,7 @@ class Comments extends PureComponent {
 
     loadComments() {
         const { status, comments, dispatch, post_id, user } = this.props;
+
         const preLoaderComments = <div className="app-comments_preloader">
             <div className="circle"></div>
         </div>;
